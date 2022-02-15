@@ -8,6 +8,7 @@ const Form = () => {
   const [sNimi, setsNimi] = useState();
   const [puh, setpuh] = useState();
   const [msg, setmsg] = useState();
+  
   return (
     <section className="Form">
       <h2>Fill the form</h2>

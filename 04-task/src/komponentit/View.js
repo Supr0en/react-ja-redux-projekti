@@ -1,6 +1,5 @@
 import React, {useState} from "react";
 import './View.css';
-import Form from "./Form";
 
 const View = (props) => {
   
