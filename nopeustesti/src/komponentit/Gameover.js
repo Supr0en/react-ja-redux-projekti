@@ -6,8 +6,10 @@ const Gameover = (props) => {
     
     return(
       <div id="overlay">
-        <div id="gameover">Your score: <br/>{score}
-        <button id="startgame" onClick={ props.startCallback }>New Game</button></div>
+        <div 
+          id="gameover">Your score: <br/>{score}
+          <button id="startgame" onClick={ props.startCallback }>New Game</button>
+        </div>
       </div>
     );
   }
