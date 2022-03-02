@@ -1,15 +1,14 @@
-import React, {useState} from "react";
-
 const Laske = (props) =>{
 
     const laskuri = (luku1, luku2) => {
-        while (luku1 && luku2 && luku1 !== luku2)
-        if(luku1 > luku2){
-            [luku1, luku2] = [luku1 - luku2, luku2];
-        } else {
-            [luku1, luku2] = [luku1, luku2 - luku1];
-        };
-        return luku1 || luku2;
+        let tulos;
+
+        for(let i = 1; i <= luku1 && i <= luku2; i++) {
+            if(luku1 % i === 0 && luku2 % i === 0) {
+                tulos = i;
+            }
+        }
+        return tulos;
     };
 
     return (
