@@ -1,10 +1,6 @@
 import './App.css';
-import react, {useState} from "react";
-var lkm = 0; 
-
+import React, {useState} from "react"; 
 export default function App() {
-  const [count, setCount] = useState(0);
-
   const anekdootit = [
     'If it hurts, do it more often.',
     'Adding manpower to a late software project makes it later!',
@@ -14,18 +10,19 @@ export default function App() {
     'Debugging is twice as hard as writing the code in the first place. Therefore, if you write the code as cleverly as possible, you are, by definition, not smart enough to debug it.',
     'Programming without an extremely heavy use of console.log is same as if a doctor would refuse to use x-rays or blood tests when diagnosing patients.'
   ];
-  
-  function lisaa(){
-    
-  }
 
-  //const random = anekdootit[Math.floor(Math.random() *  anekdootit.length )]
+  function lisaa(){
+    const random = anekdootit[Math.floor(Math.random() *  anekdootit.length )]
+    
+    return random;
+  }
+  const [current, setCurrent] = useState(lisaa);
 
   return (
     <div className="App">
       <h1>Anekdootti</h1>
-      <p>{anekdootit[count]}</p> 
-      <button onClick={() => setCount( count + 1 )}>next anecdote</button>
+      <p>{current}</p> 
+      <button onClick={() => setCurrent( lisaa )}>next anecdote</button>
     </div>
   );
 }
