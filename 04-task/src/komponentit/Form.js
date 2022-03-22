@@ -26,7 +26,7 @@ const Form = () => {
             <input className="form-control" aria-describedby="puh" id="puh" type="text" onChange={(e) => setpuh(e.target.value)} />
         </div>
         <div className="mb-3">
-            <label for="msg" className="form-label">Message: </label>
+            <label for="msg" className="form-label">Viesti: </label>
             <input className="form-control" aria-describedby="msg" id="msg" type="text" onChange={(e) => setmsg(e.target.value)} />
         </div>
 
