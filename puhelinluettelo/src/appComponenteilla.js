@@ -1,0 +1,68 @@
+import { useState } from 'react';
+import './App.css';
+import PersonForm from './components/personForm';
+import InputField from './components/inputField';
+import Person from './components/person';
+
+const App = ( props ) => {
+  const [persons, setPersons] = useState(props.persons);
+  const [newPerson, setNewPerson] = useState("");
+  const [newNumber, setNewNumber] = useState("");
+  const [showFilter, setFilterPerson] = useState("");
+  const [showAll, setShowAll] = useState(true);
+
+  const handlePersonChange = (event) => {
+    console.log(event.target.value);
+    setNewPerson(event.target.value);
+  };
+
+  const handleNumberChange = (event) => {
+    console.log(event.target.value);
+    setNewNumber(event.target.value);
+  };
+  
+  const handleFilterChange = (event) =>{
+    if(event.target.value === ''){
+      setShowAll(true);
+    } else {
+      setShowAll(false);
+    }
+    setFilterPerson(event.target.value);
+  };
+
+  const personsToShow = showAll ? persons : persons.filter((person) => person.name.toLowerCase().includes(showFilter));
+
+
+  const addPerson = (event) => {
+    event.preventDefault();
+    console.log("button clicked", event.target);
+
+    persons.map(person =>{
+      if (newPerson === person.name){
+        return alert(`$[newPerson] already exisct`)
+      }
+    })
+    const contactObject = {
+      name: newPerson,
+      number: newNumber,
+      id: persons.length + 1,
+    };
+    setPersons(persons.concat(contactObject));
+    setNewPerson("");
+    setNewNumber("");
+  };
+
+  return (
+    <div className="App">
+      <h2>Phonebook</h2>
+      <InputField FilterChange={handleFilterChange} />
+      <h2>Add a new contact</h2>
+      <PersonForm addPerson={addPerson} newPerson={newPerson} newNumber={newNumber} personChange={handlePersonChange} numberChange={handleNumberChange} />
+      <ul>
+        <Person personsToShow={personsToShow} />
+      </ul>
+    </div>
+  );
+}
+
+export default App;
